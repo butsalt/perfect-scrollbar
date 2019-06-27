@@ -62,6 +62,13 @@ export default function(i) {
   }
 
   function shouldHandle(e) {
+    // 修改!! 执行检查是否能滚动的回调
+    if (i.settings.shouldScroll) {
+      if (i.settings.shouldScroll() === false) {
+        return false;
+      }
+    }
+
     if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
       return false;
     }

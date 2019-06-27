@@ -25,6 +25,8 @@ const defaultSettings = () => ({
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
+  // 修改!! 增加检查是否能滚动的回调
+  shouldScroll: null,
 });
 
 const handlers = {

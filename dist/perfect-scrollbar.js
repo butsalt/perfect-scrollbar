@@ -1,6 +1,6 @@
 /*!
- * perfect-scrollbar v1.4.0
- * (c) 2018 Hyunje Jun
+ * perfect-scrollbar v1.4.0-beta.0
+ * (c) 2019 Hyunje Jun
  * @license MIT
  */
 (function (global, factory) {
@@ -314,7 +314,8 @@ var env = {
   supportsTouch:
     typeof window !== 'undefined' &&
     ('ontouchstart' in window ||
-      (window.DocumentTouch && document instanceof window.DocumentTouch)),
+      (window.DocumentTouch && document instanceof window.DocumentTouch)) ||
+      navigator.maxTouchPoints > 0,
   supportsIePointer:
     typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
   isChrome:
@@ -940,6 +941,13 @@ var touch = function(i) {
   }
 
   function shouldHandle(e) {
+    // 修改!! 执行检查是否能滚动的回调
+    if (i.settings.shouldScroll) {
+      if (i.settings.shouldScroll() === false) {
+        return false;
+      }
+    }
+
     if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
       return false;
     }
@@ -1105,6 +1113,8 @@ var defaultSettings = function () { return ({
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
+  // 修改!! 增加检查是否能滚动的回调
+  shouldScroll: null,
 }); };
 
 var handlers = {

@@ -119,7 +119,11 @@ export default function(i) {
     if (!i.settings.useBothWheelAxes) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
-      element.scrollTop -= deltaY * i.settings.wheelSpeed;
+      // 修改!!!
+      // 避免火狐下能无限向下滚动
+      if (element.scrollTop <= i.contentHeight - i.containerHeight - 1 || deltaY > 0) {
+        element.scrollTop -= deltaY * i.settings.wheelSpeed;
+      }
       element.scrollLeft += deltaX * i.settings.wheelSpeed;
     } else if (i.scrollbarYActive && !i.scrollbarXActive) {
       // only vertical scrollbar is active and useBothWheelAxes option is

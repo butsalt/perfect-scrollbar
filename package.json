@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdbootstrap/perfect-scrollbar"
+    "url": "https://github.com/butsalt/perfect-scrollbar"
   },
   "bugs": {
-    "url": "https://github.com/mdbootstrap/perfect-scrollbar/issues"
+    "url": "https://github.com/butsalt/perfect-scrollbar/issues"
   },
   "jspm": {
     "main": "dist/perfect-scrollbar.common.js",

@@ -22,6 +22,12 @@
 
 ________
 
+## 为什么要有这个fork？
+
+* 修复了火狐在滚动窗口高度为小数时出现可以无限滚动的bug
+* 添加`shouldScroll`回调，在滚动时会先调用这个函数，如果返回`false`就禁止滚动
+* 原先的触屏检测无法检测到chromebook支持触屏，这里做了修改
+
 ## Why perfect-scrollbar?
 
 perfect-scrollbar is minimalistic but *perfect* (for us, and maybe for most
